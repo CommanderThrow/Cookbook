@@ -21,9 +21,10 @@ const RecipeList = () => {
     );
     return nameMatch || ingredientsMatch;
   });
+
   return (
     <>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col justify-center items-center">
         <div className="pb-5">
           <h1 className="text-3xl font-bold py-5">Cookbook: Recipe Finder</h1>
           <input
@@ -34,15 +35,15 @@ const RecipeList = () => {
             className="input input-bordered w-full max-w-xs"
           />
         </div>
-        <div>
-          {filteredRecipes.length > 0 ? (
-            filteredRecipes.map((recipe) => (
-              <RecipeCard recipe={recipe} key={recipe.id} />
-            ))
-          ) : (
-            <p>No recipes found.</p>
-          )}
-        </div>
+      </div>
+      <div className="grid grid-cols-1 px-5 md:grid-cols-2 lg:grid-cols-3 gap-4 min-h-[300px]">
+        {filteredRecipes.length > 0 ? (
+          filteredRecipes.map((recipe) => (
+            <RecipeCard recipe={recipe} key={recipe.id} />
+          ))
+        ) : (
+          <p className="text-center col-span-full">No recipes found.</p>
+        )}
       </div>
     </>
   );

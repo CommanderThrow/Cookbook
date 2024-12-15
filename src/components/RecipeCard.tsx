@@ -28,7 +28,7 @@ const RecipeCard = (recipe: RecipeCardProps) => {
 
   return (
     <>
-      <div className="card card-side bg-base-100">
+      <div className="card card-side bg-base-100 min-h-[300px]">
         <figure>
           <img src={recipe.recipe.image} alt={recipe.recipe.name} />
         </figure>
@@ -37,6 +37,7 @@ const RecipeCard = (recipe: RecipeCardProps) => {
           <p className="font-bold">
             Time: {recipe.recipe.cooking_time} minutes
           </p>
+          <p className="font-bold">Ingredients</p>
           <ul>
             {recipe.recipe.ingredients.map((ingredient) => (
               <li key={`${recipe.recipe.id}-${ingredient}`}>{ingredient}</li>
@@ -62,9 +63,8 @@ const RecipeCard = (recipe: RecipeCardProps) => {
                     <li key={ingredient}>{ingredient}</li>
                   ))}
                 </ul>
-                <h2 className="font-bold pt-4">
-                  Instructions ({recipe.recipe.cooking_time} minutes)
-                </h2>
+                <h2 className="font-bold pt-4">Time: {recipe.recipe.cooking_time} minutes</h2>
+                <h2 className="font-bold pt-4">Instructions</h2>
                 <p>{recipe.recipe.instructions}</p>
                 <div className="modal-action">
                   <button
