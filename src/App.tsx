@@ -5,6 +5,7 @@ import recipes from "./data/recipe.json";
 
 function App() {
   const [findRecipe, setFindRecipe] = useState("");
+  const [showDetail, setShowDetail] = useState<number | null>(null);
 
   const handleFindRecipe = (event: {
     target: { value: React.SetStateAction<string> };
@@ -22,6 +23,10 @@ function App() {
     );
     return nameMatch || ingredientsMatch;
   });
+
+  const toggleDetail = (id: number) => {
+    setShowDetail((prevId) => (prevId === id ? null : id));
+  };
 
   return (
     <>
@@ -52,8 +57,15 @@ function App() {
                     <li key={`${recipe.id}-${ingredient}`}>{ingredient}</li>
                   ))}
                 </ul>
-                <p>Cooking Time: {recipe.cooking_time} minutes</p>
-                <p>{recipe.instructions}</p>
+                <button type="button" onClick={() => toggleDetail(recipe.id)}>
+                  {showDetail === recipe.id ? "Hide Details" : "Show Details"}
+                </button>
+                {showDetail === recipe.id && (
+                  <div>
+                    <p>Cooking Time: {recipe.cooking_time} minutes</p>
+                    <p>{recipe.instructions}</p>
+                  </div>
+                )}
               </div>
             ))
           ) : (
