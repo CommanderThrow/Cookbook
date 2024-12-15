@@ -2,10 +2,10 @@ import "./App.css";
 import type React from "react";
 import { useState } from "react";
 import recipes from "./data/recipe.json";
+import RecipeCard from "./components/RecipeCard";
 
 function App() {
   const [findRecipe, setFindRecipe] = useState("");
-  const [showDetail, setShowDetail] = useState<number | null>(null);
 
   const handleFindRecipe = (event: {
     target: { value: React.SetStateAction<string> };
@@ -24,10 +24,6 @@ function App() {
     return nameMatch || ingredientsMatch;
   });
 
-  const toggleDetail = (id: number) => {
-    setShowDetail((prevId) => (prevId === id ? null : id));
-  };
-
   return (
     <>
       <div>
@@ -41,32 +37,7 @@ function App() {
         <div>
           {filteredRecipes.length > 0 ? (
             filteredRecipes.map((recipe) => (
-              <div key={recipe.id}>
-                <h2>{recipe.name}</h2>
-                <img
-                  src={recipe.image}
-                  alt={recipe.name}
-                  style={{
-                    width: "150px",
-                    height: "150px",
-                    objectFit: "cover",
-                  }}
-                />
-                <ul>
-                  {recipe.ingredients.map((ingredient) => (
-                    <li key={`${recipe.id}-${ingredient}`}>{ingredient}</li>
-                  ))}
-                </ul>
-                <button type="button" onClick={() => toggleDetail(recipe.id)}>
-                  {showDetail === recipe.id ? "Hide Details" : "Show Details"}
-                </button>
-                {showDetail === recipe.id && (
-                  <div>
-                    <p>Cooking Time: {recipe.cooking_time} minutes</p>
-                    <p>{recipe.instructions}</p>
-                  </div>
-                )}
-              </div>
+              <RecipeCard recipe={recipe} key={recipe.id} />
             ))
           ) : (
             <p>No recipes found.</p>
