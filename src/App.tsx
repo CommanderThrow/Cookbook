@@ -11,6 +11,17 @@ function App() {
           {recipes.map((recipe) => (
             <div key={recipe.id}>
               <h2>{recipe.name}</h2>
+              <img
+                src={recipe.image}
+                alt={recipe.name}
+                style={{ width: "150px", height: "150px", objectFit: "cover" }}
+              />
+              <ul>
+                {recipe.ingredients.map((ingredient) => (
+                  <li key={`${recipe.id}-${ingredient}`}>{ingredient}</li>
+                ))}
+              </ul>
+              <p>{recipe.cooking_time}</p>
               <p>{recipe.instructions}</p>
             </div>
           ))}
