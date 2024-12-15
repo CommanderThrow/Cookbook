@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 interface Recipe {
   id: number;
   name: string;
@@ -14,38 +12,73 @@ interface RecipeCardProps {
 }
 
 const RecipeCard = (recipe: RecipeCardProps) => {
-  const [showDetail, setShowDetail] = useState<number | null>(null);
-  const toggleDetail = (id: number) => {
-    setShowDetail((prevId) => (prevId === id ? null : id));
+  const handleModalOpen = (id: number) => {
+    const modal = document.getElementById(
+      `my_modal_${id}`
+    ) as HTMLDialogElement;
+    modal?.showModal();
+  };
+
+  const handleModalClose = (id: number) => {
+    const modal = document.getElementById(
+      `my_modal_${id}`
+    ) as HTMLDialogElement;
+    modal?.close();
   };
 
   return (
     <>
-      <div>
-        <h2>{recipe.recipe.name}</h2>
-        <img
-          src={recipe.recipe.image}
-          alt={recipe.recipe.name}
-          style={{
-            width: "150px",
-            height: "150px",
-            objectFit: "cover",
-          }}
-        />
-        <ul>
-          {recipe.recipe.ingredients.map((ingredient) => (
-            <li key={`${recipe.recipe.id}-${ingredient}`}>{ingredient}</li>
-          ))}
-        </ul>
-        <button type="button" onClick={() => toggleDetail(recipe.recipe.id)}>
-          {showDetail === recipe.recipe.id ? "Hide Details" : "Show Details"}
-        </button>
-        {showDetail === recipe.recipe.id && (
-          <div>
-            <p>Cooking Time: {recipe.recipe.cooking_time} minutes</p>
-            <p>{recipe.recipe.instructions}</p>
+      <div className="card card-side bg-base-100">
+        <figure>
+          <img src={recipe.recipe.image} alt={recipe.recipe.name} />
+        </figure>
+        <div className="card-body">
+          <h2 className="text-2xl font-bold">{recipe.recipe.name}</h2>
+          <p className="font-bold">
+            Time: {recipe.recipe.cooking_time} minutes
+          </p>
+          <ul>
+            {recipe.recipe.ingredients.map((ingredient) => (
+              <li key={`${recipe.recipe.id}-${ingredient}`}>{ingredient}</li>
+            ))}
+          </ul>
+          <div className="card-actions justify-end">
+            <button
+              type="button"
+              onClick={() => handleModalOpen(recipe.recipe.id)}
+              className="btn btn-active"
+            >
+              Detail
+            </button>
+
+            <dialog id={`my_modal_${recipe.recipe.id}`} className="modal">
+              <div className="modal-box">
+                <h3 className="font-bold text-3xl pb-3">
+                  {recipe.recipe.name}
+                </h3>
+                <h2 className="font-bold">Ingredients</h2>
+                <ul>
+                  {recipe.recipe.ingredients.map((ingredient) => (
+                    <li key={ingredient}>{ingredient}</li>
+                  ))}
+                </ul>
+                <h2 className="font-bold pt-4">
+                  Instructions ({recipe.recipe.cooking_time} minutes)
+                </h2>
+                <p>{recipe.recipe.instructions}</p>
+                <div className="modal-action">
+                  <button
+                    type="button"
+                    className="btn"
+                    onClick={() => handleModalClose(recipe.recipe.id)}
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </dialog>
           </div>
-        )}
+        </div>
       </div>
     </>
   );

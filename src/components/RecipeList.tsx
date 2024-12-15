@@ -23,14 +23,17 @@ const RecipeList = () => {
   });
   return (
     <>
-      <div>
-        <h1>Recipe Finder</h1>
-        <input
-          type="text"
-          placeholder="Search recipes..."
-          value={findRecipe}
-          onChange={handleFindRecipe}
-        />
+      <div className="flex flex-col items-center">
+        <div className="pb-5">
+          <h1 className="text-3xl font-bold py-5">Cookbook: Recipe Finder</h1>
+          <input
+            type="text"
+            placeholder="Search recipes..."
+            value={findRecipe}
+            onChange={handleFindRecipe}
+            className="input input-bordered w-full max-w-xs"
+          />
+        </div>
         <div>
           {filteredRecipes.length > 0 ? (
             filteredRecipes.map((recipe) => (
