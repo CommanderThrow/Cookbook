@@ -12,9 +12,16 @@ function App() {
     setFindRecipe(event.target.value);
   };
 
-  const filteredRecipes = recipes.filter((recipe) =>
-    recipe.name.toLowerCase().includes(findRecipe.toLowerCase())
-  );
+  const filteredRecipes = recipes.filter((recipe) => {
+    const nameMatch = recipe.name
+      .toLowerCase()
+      .includes(findRecipe.toLowerCase());
+
+    const ingredientsMatch = recipe.ingredients.some((ingredient) =>
+      ingredient.toLowerCase().includes(findRecipe.toLowerCase())
+    );
+    return nameMatch || ingredientsMatch;
+  });
 
   return (
     <>
