@@ -38,7 +38,7 @@ const RecipeCard = (recipe: RecipeCardProps) => {
             Time: {recipe.recipe.cooking_time} minutes
           </p>
           <p className="font-bold">Ingredients</p>
-          <ul>
+          <ul className="m-2 pl-2 list-decimal">
             {recipe.recipe.ingredients.map((ingredient) => (
               <li key={`${recipe.recipe.id}-${ingredient}`}>{ingredient}</li>
             ))}

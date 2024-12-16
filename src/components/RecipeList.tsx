@@ -44,7 +44,7 @@ const RecipeList = () => {
             <RecipeCard recipe={recipe} key={recipe.id} />
           ))
         ) : (
-          <p className="text-center col-span-full">No recipes found.</p>
+          <p className="text-center col-span-full text-2xl font-bold">No recipes found.</p>
         )}
       </div>
     </>
