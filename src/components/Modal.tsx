@@ -53,7 +53,7 @@ const Modal = ({ recipe }: ModalProps) => {
             <div className="modal-action">
               <button
                 type="button"
-                className="btn"
+                className="btn btn-success"
                 onClick={() => handleModalClose(recipe.id)}
               >
                 Close
