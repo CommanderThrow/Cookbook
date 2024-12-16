@@ -26,13 +26,15 @@ const RecipeList = () => {
     <>
       <div className="flex flex-col justify-center items-center">
         <div className="pb-5">
-          <h1 className="text-4xl font-bold py-5">Cookbook: Recipe Finder</h1>
+          <h1 className="text-4xl font-bold py-5 w-full max-w-md">
+            Cookbook: Recipe Finder
+          </h1>
           <input
             type="text"
             placeholder="Search recipes..."
             value={findRecipe}
             onChange={handleFindRecipe}
-            className="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full max-w-md"
           />
         </div>
       </div>
