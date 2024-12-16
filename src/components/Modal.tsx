@@ -31,16 +31,16 @@ const Modal = ({ recipe }: ModalProps) => {
         <button
           type="button"
           onClick={() => handleModalOpen(recipe.id)}
-          className="btn btn-success"
+          className="btn glass"
         >
           Detail
         </button>
 
         <dialog id={`my_modal_${recipe.id}`} className="modal">
-          <div className="modal-box bg-green-400">
+          <div className="modal-box bg-green-500">
             <h3 className="font-bold text-3xl pb-3">{recipe.name}</h3>
             <h2 className="font-bold">Ingredients</h2>
-            <ul>
+            <ul className="pl-4 list-decimal">
               {recipe.ingredients.map((ingredient) => (
                 <li key={ingredient}>{ingredient}</li>
               ))}
@@ -53,7 +53,7 @@ const Modal = ({ recipe }: ModalProps) => {
             <div className="modal-action">
               <button
                 type="button"
-                className="btn btn-success"
+                className="btn glass"
                 onClick={() => handleModalClose(recipe.id)}
               >
                 Close

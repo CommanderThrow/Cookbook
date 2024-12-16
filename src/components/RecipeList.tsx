@@ -25,9 +25,10 @@ const RecipeList = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center">
-        <div className="pb-5">
-          <h1 className="text-4xl font-bold py-5 w-full max-w-md">
-            Cookbook: Recipe Finder
+        <div className="bg-green-950 w-screen py-8 mb-5 flex flex-col justify-center items-center">
+          <h1 className="text-4xl text-white pl-2 font-bold py-5 w-full max-w-md">
+            Cookbook: 
+            Recipe Finder
           </h1>
           <input
             type="text"
