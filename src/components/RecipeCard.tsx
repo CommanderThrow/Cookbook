@@ -28,7 +28,7 @@ const RecipeCard = (recipe: RecipeCardProps) => {
 
   return (
     <>
-      <div className="card card-side bg-base-100 min-h-[300px]">
+      <div className="card card-side bg-green-400 min-h-[300px] shadow-xl">
         <figure>
           <img src={recipe.recipe.image} alt={recipe.recipe.name} />
         </figure>
@@ -47,13 +47,13 @@ const RecipeCard = (recipe: RecipeCardProps) => {
             <button
               type="button"
               onClick={() => handleModalOpen(recipe.recipe.id)}
-              className="btn btn-active"
+              className="btn btn-success"
             >
               Detail
             </button>
 
             <dialog id={`my_modal_${recipe.recipe.id}`} className="modal">
-              <div className="modal-box">
+              <div className="modal-box bg-green-400">
                 <h3 className="font-bold text-3xl pb-3">
                   {recipe.recipe.name}
                 </h3>

@@ -26,7 +26,7 @@ const RecipeList = () => {
     <>
       <div className="flex flex-col justify-center items-center">
         <div className="pb-5">
-          <h1 className="text-3xl font-bold py-5">Cookbook: Recipe Finder</h1>
+          <h1 className="text-4xl font-bold py-5">Cookbook: Recipe Finder</h1>
           <input
             type="text"
             placeholder="Search recipes..."
@@ -36,7 +36,7 @@ const RecipeList = () => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-1 px-5 md:grid-cols-2 lg:grid-cols-3 gap-4 min-h-[300px]">
+      <div className="grid grid-cols-1 px-5 gap-2 md:grid-cols-2 lg:grid-cols-3 min-h-[300px]">
         {filteredRecipes.length > 0 ? (
           filteredRecipes.map((recipe) => (
             <RecipeCard recipe={recipe} key={recipe.id} />
